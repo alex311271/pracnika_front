@@ -23,8 +23,9 @@ export const Header = styled(HeaderContainer)`
 	align-items: center;
 	position: fixed;
 	top: 0;
+	height: 120px;
 	width: 62.5rem;
 	background-color: #fff;
 	padding: 1rem 2.5rem;
-	box-shadow: 0 -0.125rem 1rem #000
+	box-shadow: 0 -0.125rem 1rem #000;
 `;
