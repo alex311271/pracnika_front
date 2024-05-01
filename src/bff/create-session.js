@@ -1,14 +1,14 @@
-import { removeComment } from "./session/remove-comment";
-import { ROLE } from '../constans';
+import { removeComment } from './session';
+import { ROLE } from '../constants';
 
 export const createSession = (roleId) => {
 	const session = {
-	logout() {
-				Object.keys(session).forEach((key) => {
-					delete session[key];
-				});
-			}
-		}
+		logout() {
+			Object.keys(session).forEach((key) => {
+				delete session[key];
+			});
+		},
+	};
 
 	switch (roleId) {
 		case ROLE.ADMIN: {
@@ -22,11 +22,10 @@ export const createSession = (roleId) => {
 		}
 
 		case ROLE.READER: {
-			
 			break;
 		}
 
 		default:
 	}
-	return session
-}
+	return session;
+};

@@ -1,25 +1,18 @@
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Icon } from './index';
+import { Button } from '../../button/button';
+import { ROLE } from '../../../constants';
+import { selectUserRole, selectUserLogin, selectUserSession } from '../../../selectors';
+import { logout } from '../../../actions/logout';
 
 const RightAlined = styled.div`
 	display: flex;
 	justify-content: center;
 `;
 
-const StyledLink = styled(Link)`
-	display: flex;
-	font-size: 1.125rem;
-	width: 6rem;
-	height: 2rem;
-	border: 1px solid #000;
-	border-radius: 0.5rem;
-	justify-content: center;
-	align-items: center;
-	background-color: #eee;
-`;
-
-const StyledButton = styled.div`
+const StiledIcon = styled.div`
 	&:hover {
 		cursor: pointer;
 	}
@@ -27,15 +20,35 @@ const StyledButton = styled.div`
 
 const ControlPanelContainer = ({ className }) => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const roleId = useSelector(selectUserRole);
+	const login = useSelector(selectUserLogin);
+	const session = useSelector(selectUserSession);
+
 	return (
 		<div className={className}>
 			<RightAlined>
-				<StyledLink to="/login">Войти</StyledLink>
+				{roleId === ROLE.GUEST ? (
+					<Button>
+						<Link to="/login">Войти</Link>
+					</Button>
+				) : (
+					<>
+						<div>{login}</div>
+						<StiledIcon onClick={() => navigate(-1)}>
+							<Icon id="fa-right-from-bracket" size="1.3rem" margin="1rem 1rem 0 0" />
+						</StiledIcon>
+					</>
+				)}
 			</RightAlined>
 			<RightAlined>
-				<StyledButton onClick={() => navigate(-1)}>
-					<Icon id="fa-arrow-circle-left" size="1.3rem" margin="1rem 1rem 0 0" />
-				</StyledButton>
+				<StiledIcon onClick={() => dispatch(logout(session))}>
+					<Icon
+						id="fa-solid fa-arrow-right-from-bracket"
+						size="1.3rem"
+						margin="1rem 1rem 0 0"
+					/>
+				</StiledIcon>
 
 				<Link to="/post">
 					<Icon id="fa-file-text-o" size="1.3rem" margin="1rem 0 0 0" />
