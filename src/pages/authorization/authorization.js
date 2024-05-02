@@ -1,13 +1,15 @@
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styled from 'styled-components';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { server } from '../../bff';
 import { Input, Button, H2 } from '../../components';
 import { setUser } from '../../actions';
+import { selectUserRole } from '../../selectors';
+import { ROLE } from '../../constants';
 
 const authFormSchema = yup.object().shape({
 	login: yup
@@ -27,6 +29,7 @@ const authFormSchema = yup.object().shape({
 const AuthorizationContainer = ({ className }) => {
 	const {
 		register,
+		reset,
 		handleSubmit,
 		formState: { errors },
 	} = useForm({
@@ -40,11 +43,25 @@ const AuthorizationContainer = ({ className }) => {
 	const [serverError, setServerError] = useState(null);
 
 	const dispatch = useDispatch();
+	const store = useStore();
+	const roleId = useSelector(selectUserRole);
+
+	useEffect(() => {
+		let currentWasLogout = store.getState().app.wasLogout;
+		return store.subscribe(() => {
+			let prevousWasLogout = currentWasLogout;
+			currentWasLogout = store.getState().app.wasLogout;
+			if (currentWasLogout !== prevousWasLogout) {
+				reset();
+			}
+		});
+	}, [reset, store]);
 
 	const onSubmit = ({ login, password }) => {
 		server.authorize(login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса ${error}`);
+				return;
 			}
 
 			dispatch(setUser(res));
@@ -54,6 +71,10 @@ const AuthorizationContainer = ({ className }) => {
 	const formError = errors?.login?.message || errors?.password?.message;
 	const errorMessage = formError || serverError;
 
+	if (roleId !== ROLE.GUEST) {
+		return <Navigate to="/" />;
+	}
+
 	return (
 		<div className={className}>
 			<H2>Авторизация</H2>
@@ -61,12 +82,12 @@ const AuthorizationContainer = ({ className }) => {
 				<Input
 					type="text"
 					placeholder="Логин..."
-					{...register('login', { ...register('login') })}
+					{...register('login', { onChange: () => setServerError(null) })}
 				/>
 				<Input
 					type="password"
 					placeholder="Пароль..."
-					{...register('password')}
+					{...register('password', { onChange: () => setServerError(null) })}
 				/>
 				<Button type="submit" disabled={!!formError}>
 					Авторизоваться
@@ -89,7 +110,6 @@ const ErrorMessage = styled.div`
 	background-color: #fcadad;
 	text-align: center;
 	padding: 5px;
-	margin: 10px 0 0;
 	font-size: 18px;
 	margin: 10px 0;
 `;

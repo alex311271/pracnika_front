@@ -1,15 +1,14 @@
 {
-	"users":[
+	"users": [
 		{
 			"id": "001",
 			"login": "itsIam",
 			"password": "qwerty123",
 			"registed_at": "2023-03-14",
 			"role_id": "1"
-
 		}
 	],
-	"roles":[
+	"roles": [
 		{
 			"id": 0,
 			"name": "Администратор"
@@ -27,7 +26,7 @@
 			"name": "Гость"
 		}
 	],
-	"posts":[
+	"posts": [
 		{
 			"id": "001",
 			"title": "Сейчас всё чаще звучит треск разлетающихся скреп",

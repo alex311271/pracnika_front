@@ -10,13 +10,19 @@ import { logout } from '../../../actions/logout';
 const RightAlined = styled.div`
 	display: flex;
 	justify-content: center;
+	align-items: center;
 `;
 
-const StiledIcon = styled.div`
+const StyledIcon = styled.div`
 	&:hover {
 		cursor: pointer;
 	}
 `;
+const UserName = styled.div`
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 16px 0 0px
+`
 
 const ControlPanelContainer = ({ className }) => {
 	const navigate = useNavigate();
@@ -34,21 +40,17 @@ const ControlPanelContainer = ({ className }) => {
 					</Button>
 				) : (
 					<>
-						<div>{login}</div>
-						<StiledIcon onClick={() => navigate(-1)}>
-							<Icon id="fa-right-from-bracket" size="1.3rem" margin="1rem 1rem 0 0" />
-						</StiledIcon>
+						<UserName>{login}</UserName>
+						<StyledIcon onClick={() => dispatch(logout(session))}>
+							<Icon id="fa fa-sign-out" size="1.3rem" margin="2.5px 0 2.5px 0" />
+						</StyledIcon>
 					</>
 				)}
 			</RightAlined>
 			<RightAlined>
-				<StiledIcon onClick={() => dispatch(logout(session))}>
-					<Icon
-						id="fa-solid fa-arrow-right-from-bracket"
-						size="1.3rem"
-						margin="1rem 1rem 0 0"
-					/>
-				</StiledIcon>
+				<StyledIcon onClick={() => navigate(-1)}>
+					<Icon id="fa fa-backward" size="1.3rem" margin="1rem 1rem 0 0" />
+				</StyledIcon>
 
 				<Link to="/post">
 					<Icon id="fa-file-text-o" size="1.3rem" margin="1rem 0 0 0" />
