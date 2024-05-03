@@ -13,16 +13,11 @@ const RightAlined = styled.div`
 	align-items: center;
 `;
 
-const StyledIcon = styled.div`
-	&:hover {
-		cursor: pointer;
-	}
-`;
 const UserName = styled.div`
 	font-size: 18px;
 	font-weight: bold;
-	margin: 0 16px 0 0px
-`
+	margin: 0 16px 0 0px;
+`;
 
 const ControlPanelContainer = ({ className }) => {
 	const navigate = useNavigate();
@@ -41,16 +36,16 @@ const ControlPanelContainer = ({ className }) => {
 				) : (
 					<>
 						<UserName>{login}</UserName>
-						<StyledIcon onClick={() => dispatch(logout(session))}>
+						<div onClick={() => dispatch(logout(session))}>
 							<Icon id="fa fa-sign-out" size="1.3rem" margin="2.5px 0 2.5px 0" />
-						</StyledIcon>
+						</div>
 					</>
 				)}
 			</RightAlined>
 			<RightAlined>
-				<StyledIcon onClick={() => navigate(-1)}>
+				<div onClick={() => navigate(-1)}>
 					<Icon id="fa fa-backward" size="1.3rem" margin="1rem 1rem 0 0" />
-				</StyledIcon>
+				</div>
 
 				<Link to="/post">
 					<Icon id="fa-file-text-o" size="1.3rem" margin="1rem 0 0 0" />
