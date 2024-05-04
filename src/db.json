@@ -27,37 +27,23 @@
       "password": "123456",
       "register_at": "2051-09-07 16:27",
       "role_id": 2
-    },
-    {
-      "id": "72ab",
-      "login": "Natasha",
-      "password": "123456",
-      "register_at": "2054-06-02 01:24",
-      "role_id": 2
-    },
-    {
-      "id": "ae20",
-      "login": "Olya",
-      "password": "123456",
-      "register_at": "2046-03-12 22:08",
-      "role_id": 2
     }
   ],
   "roles": [
     {
-      "id": 0,
+      "id": "0",
       "name": "Администратор"
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Модератор"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Читатель"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Гость"
     }
   ],

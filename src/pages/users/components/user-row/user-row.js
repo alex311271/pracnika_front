@@ -11,18 +11,19 @@ const UserRowContainer = ({
 	registeredAt,
 	roleId: userRoleId,
 	roles,
+	onUserRemove,
 }) => {
-	const [initialRoleId, setInitialRoleId] = useState(userRoleId)
+	const [initialRoleId, setInitialRoleId] = useState(userRoleId);
 	const [selectedRoleId, setSelectedRole] = useState(userRoleId);
 	const requestServer = useServerRequest();
 	const onRoleChange = ({ target }) => {
 		setSelectedRole(Number(target.value));
 	};
 	const onRoleSave = (userId, newUserRoleId) => {
-		requestServer('updateUseRole', userId, newUserRoleId).then(()=>{
-			setInitialRoleId(newUserRoleId)
+		requestServer('updateUseRole', userId, newUserRoleId).then(() => {
+			setInitialRoleId(newUserRoleId);
 		});
-	}
+	};
 
 	const isSaveButtonDisabled = selectedRoleId === initialRoleId;
 	return (
@@ -48,7 +49,9 @@ const UserRowContainer = ({
 					/>
 				</div>
 			</TableRow>
-			<Icon id="fa-trash-o" size="1.3rem" margin="0 0 0 10px" onClick={() => {}} />
+			<div onClick={onUserRemove}>
+				<Icon id="fa-trash-o" size="1.3rem" margin="0 0 0 10px" />
+			</div>
 		</div>
 	);
 };
