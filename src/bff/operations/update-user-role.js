@@ -2,9 +2,10 @@ import { setUserRole } from '../api';
 import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
-export const updateUseRole = async (userSession, userId, newUserRoleId) => {
-	const accessRole = [ROLE.ADMIN];
-	if (!sessions.access(userSession, accessRole)) {
+export const updateUseRole = async (hash, userId, newUserRoleId) => {
+	const accessRoles = [ROLE.ADMIN];
+	const access = await sessions.access(hash, accessRoles);
+	if (!access) {
 		return {
 			error: 'Недостаточно прав доступа',
 			res: null,
