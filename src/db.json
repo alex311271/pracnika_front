@@ -91,33 +91,12 @@
       "post_id": "001",
       "published_at": "2045-01-03 01:20",
       "content": "the third comment"
-    },
-    {
-      "id": "2419",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2044-11-28 03:02",
-      "content": "The fourth comment"
-    },
-    {
-      "id": "2027",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2059-06-13 04:56",
-      "content": "comment test"
-    },
-    {
-      "id": "4a30",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2036-08-02 12:01",
-      "content": "comment test 2"
     }
   ],
   "sessions": [
     {
-      "id": "d292",
-      "hash": "0.28292147418317559193212673562811687588691711425781",
+      "id": "57b0",
+      "hash": "0.81124310122903953157447176636196672916412353515625",
       "user": {
         "id": "001",
         "login": "itsIam",

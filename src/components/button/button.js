@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const ButtonContainer=({children, className, width, ...props})=>{
-	return(
+const ButtonContainer = ({ children, className, width, margin, ...props }) => {
+	return (
 		<button className={className} {...props}>
 			{children}
 		</button>
@@ -18,7 +18,8 @@ export const Button = styled(ButtonContainer)`
 	justify-content: center;
 	align-items: center;
 	background-color: #eee;
-	
+	margin: ${(margin = '0 0 0 0') => margin}
+
 	&:hover {
 		cursor: pointer;
 	}
