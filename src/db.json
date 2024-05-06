@@ -84,26 +84,7 @@
       "post_id": "001",
       "published_at": "2035-10-02 17:19",
       "content": "second comment"
-    },
-    {
-      "id": "a853",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2045-01-03 01:20",
-      "content": "the third comment"
     }
   ],
-  "sessions": [
-    {
-      "id": "57b0",
-      "hash": "0.81124310122903953157447176636196672916412353515625",
-      "user": {
-        "id": "001",
-        "login": "itsIam",
-        "password": "qwerty123",
-        "registeredAt": "2023-03-14",
-        "roleId": 0
-      }
-    }
-  ]
+  "sessions": []
 }
