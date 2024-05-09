@@ -1,19 +1,19 @@
-import styled from "styled-components";
-import { ControlPanel, Logo } from "./components";
+import styled from 'styled-components';
+import { ControlPanel, Logo } from './components';
 
 const Discription = styled.div``;
 
 const HeaderContainer = ({ className }) => (
 	<header className={className}>
-		<Logo/>
+		<Logo />
 		<Discription>
 			Картинки из путешествий
-			<br/>
+			<br />
 			и ассоциации
-			<br/>
+			<br />
 			связанные с ними
 		</Discription>
-		<ControlPanel/>
+		<ControlPanel />
 	</header>
 );
 

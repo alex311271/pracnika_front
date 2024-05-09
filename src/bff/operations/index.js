@@ -9,3 +9,4 @@ export * from './fetch-post';
 export * from './add-post-comment.js';
 export * from './remove-post-comment';
 export * from './save-edit';
+export * from './remove-post';

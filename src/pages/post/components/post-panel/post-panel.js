@@ -1,7 +1,31 @@
+import { useDispatch } from 'react-redux';
+import { useServerRequest } from '../../../../hooks';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Icon } from '../../../../components';
+import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../actions';
 
-const PostPanelContainer = ({ className, publishedAt, editButton }) => {
+const PostPanelContainer = ({ className, id, publishedAt, editButton }) => {
+	const dispatch = useDispatch();
+	const requestServer = useServerRequest();
+	const navigate = useNavigate();
+
+	const onPostRemove = (id) => {
+		dispatch(
+			openModal({
+				text: 'Удалить статью?',
+				onConfirm: () => {
+					dispatch(removePostAsync(requestServer, id)).then(() => {
+						navigate('/');
+					});
+
+					dispatch(CLOSE_MODAL);
+				},
+				onCancel: () => dispatch(CLOSE_MODAL),
+			}),
+		);
+	};
+
 	return (
 		<div className={className}>
 			<div className="published-at">
@@ -10,9 +34,7 @@ const PostPanelContainer = ({ className, publishedAt, editButton }) => {
 			</div>
 			<div className="buttons">
 				{editButton}
-				<div onClick={()=>{}}>
-					<Icon id=" fa-trash-o" size="20px" />
-				</div>
+				<Icon id=" fa-trash-o" size="20px" onClick={() => onPostRemove(id)} />
 			</div>
 		</div>
 	);
@@ -21,7 +43,7 @@ const PostPanelContainer = ({ className, publishedAt, editButton }) => {
 export const PostPanel = styled(PostPanelContainer)`
 	display: flex;
 	justify-content: space-between;
-	margin: ${(margin)=>margin};
+	margin: ${(margin) => margin};
 	font-size: 18px;
 
 	& .published-at {

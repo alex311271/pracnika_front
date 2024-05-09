@@ -40,12 +40,11 @@ const PostFormContainer = ({
 			<Input ref={imageRef} defaultValue={imageUrl} placeholder="Изображение..." />
 			<Input ref={titleRef} defaultValue={title} placeholder="Заголовок..." />
 			<PostPanel
+				id={id}
 				publishedAt={publishedAt}
 				margin="20px 0"
 				editButton={
-					<div onClick={onSave}>
-						<Icon id="fa-floppy-o" size="20px" margin="0 10px 0 0" />
-					</div>
+					<Icon id="fa-floppy-o" size="20px" margin="0 10px 0 0" onClick={onSave} />
 				}
 			/>
 			<div

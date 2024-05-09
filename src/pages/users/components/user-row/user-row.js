@@ -40,18 +40,15 @@ const UserRowContainer = ({
 						))}
 					</select>
 				</div>
-				<div onClick={() => onRoleSave(id, selectedRoleId)}>
-					<Icon
-						id="fa-floppy-o"
-						size="1.3rem"
-						margin="0 0 0 10px"
-						disabled={isSaveButtonDisabled}
-					/>
-				</div>
+				<Icon
+					id="fa-floppy-o"
+					size="1.3rem"
+					margin="0 0 0 10px"
+					disabled={isSaveButtonDisabled}
+					onClick={() => onRoleSave(id, selectedRoleId)}
+				/>
 			</TableRow>
-			<div onClick={onUserRemove}>
-				<Icon id="fa-trash-o" size="1.3rem" margin="0 0 0 10px" />
-			</div>
+			<Icon id="fa-trash-o" size="1.3rem" margin="0 0 0 10px" onClick={onUserRemove} />
 		</div>
 	);
 };

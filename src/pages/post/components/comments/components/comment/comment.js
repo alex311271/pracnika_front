@@ -7,6 +7,7 @@ import { useServerRequest } from '../../../../../../hooks';
 const CommentContainer = ({ className, postId, id, author, publishedAt, content }) => {
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
+
 	const onCommentRemove = (id) => {
 		dispatch(
 			openModal({
@@ -35,9 +36,12 @@ const CommentContainer = ({ className, postId, id, author, publishedAt, content 
 				</div>
 				<div className="comment-text">{content}</div>
 			</div>
-			<div onClick={() => onCommentRemove(id)}>
-				<Icon id="fa-trash-o" size="18px" margin="0 0 0 10px" />
-			</div>
+			<Icon
+				id="fa-trash-o"
+				size="18px"
+				margin="0 0 0 10px"
+				onClick={() => onCommentRemove(id)}
+			/>
 		</div>
 	);
 };
