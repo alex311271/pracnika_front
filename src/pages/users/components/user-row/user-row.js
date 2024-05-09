@@ -48,7 +48,12 @@ const UserRowContainer = ({
 					onClick={() => onRoleSave(id, selectedRoleId)}
 				/>
 			</TableRow>
-			<Icon id="fa-trash-o" size="1.3rem" margin="0 0 0 10px" onClick={onUserRemove} />
+			<Icon
+				id="fa-trash-o"
+				size="1.3rem"
+				margin="0 0 0 10px"
+				onClick={onUserRemove}
+			/>
 		</div>
 	);
 };

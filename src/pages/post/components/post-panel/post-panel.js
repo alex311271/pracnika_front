@@ -29,12 +29,21 @@ const PostPanelContainer = ({ className, id, publishedAt, editButton }) => {
 	return (
 		<div className={className}>
 			<div className="published-at">
-				<Icon id="fa-calendar-o" size="18px" margin="-1px 8px 0 0" />
+				{publishedAt && (
+					<Icon id="fa-calendar-o" size="18px" margin="-1px 8px 0 0" inactive={true} />
+				)}
 				{publishedAt}
 			</div>
 			<div className="buttons">
 				{editButton}
-				<Icon id=" fa-trash-o" size="20px" onClick={() => onPostRemove(id)} />
+				{publishedAt && (
+					<Icon
+						id=" fa-trash-o"
+						size="20px"
+						margin="0 0 0 8px"
+						onClick={() => onPostRemove(id)}
+					/>
+				)}
 			</div>
 		</div>
 	);

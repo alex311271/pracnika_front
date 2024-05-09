@@ -1,4 +1,4 @@
-import { editPost } from '../api';
+import { editPost, addPost } from '../api';
 import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
@@ -11,9 +11,10 @@ export const saveEdit = async (hash, editData) => {
 			res: null,
 		};
 	}
-	const editingPost = await editPost(editData);
+	const savePost =
+		editData.id === '' ? await addPost(editData) : await editPost(editData);
 	return {
 		error: null,
-		res: editingPost,
+		res: savePost,
 	};
 };

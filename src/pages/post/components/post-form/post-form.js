@@ -43,9 +43,7 @@ const PostFormContainer = ({
 				id={id}
 				publishedAt={publishedAt}
 				margin="20px 0"
-				editButton={
-					<Icon id="fa-floppy-o" size="20px" margin="0 10px 0 0" onClick={onSave} />
-				}
+				editButton={<Icon id="fa-floppy-o" size="20px" onClick={onSave} />}
 			/>
 			<div
 				ref={contentRef}
@@ -61,6 +59,8 @@ const PostFormContainer = ({
 
 export const PostForm = styled(PostFormContainer)`
 	& .post-text {
+		min-height: 100px;
+		border: 1px solid #000;
 		white-space: pre-line;
 		font-size: 18px;
 	}

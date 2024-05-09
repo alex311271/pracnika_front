@@ -59,15 +59,10 @@ const ControlPanelContainer = ({ className }) => {
 				/>
 
 				<Link to="/post">
-					<Icon
-						id="fa-file-text-o"
-						size="1.3rem"
-						margin="1rem 0 0 0"
-						onClick={() => {}}
-					/>
+					<Icon id="fa-file-text-o" size="1.3rem" margin="1rem 0 0 0" />
 				</Link>
 				<Link to="/users">
-					<Icon id="fa-users" size="1.3rem" margin=" 1rem 0 0 1rem " onClick={() => {}} />
+					<Icon id="fa-users" size="1.3rem" margin=" 1rem 0 0 1rem " />
 				</Link>
 			</RightAlined>
 		</div>
