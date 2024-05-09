@@ -15,13 +15,13 @@ const PostContainer = ({ className }) => {
 	const isCreating = useMatch('/post');
 	const requestServer = useServerRequest();
 
-	useLayoutEffect(()=>{
-		dispatch(RESET_POST_DATA)
-	}, [dispatch])
+	useLayoutEffect(() => {
+		dispatch(RESET_POST_DATA);
+	}, [dispatch, isCreating]);
 
 	useEffect(() => {
-		if(isCreating){
-			return
+		if (isCreating) {
+			return;
 		}
 		dispatch(loadPostAsync(requestServer, params.id));
 	}, [dispatch, requestServer, params.id, isCreating]);
