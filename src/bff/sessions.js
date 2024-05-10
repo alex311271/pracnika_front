@@ -17,5 +17,5 @@ export const sessions = {
 		const dbSession = await getSession(hash);
 
 		return !!dbSession.user && accessRoles.includes(dbSession.user.roleId);
-	}
+	},
 };
