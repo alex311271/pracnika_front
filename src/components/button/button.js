@@ -21,6 +21,6 @@ export const Button = styled(ButtonContainer)`
 	margin: ${(margin = '0 0 0 0') => margin}
 
 	&:hover {
-		cursor: pointer;
+		cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 	}
 `;
