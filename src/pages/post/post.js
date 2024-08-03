@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMatch, useParams } from 'react-router-dom';
 import { PostContent, PostForm, Comments } from './components';
@@ -14,6 +14,7 @@ const PostContainer = ({ className }) => {
 	const isEditing = useMatch('/post/:id/edit');
 	const isCreating = useMatch('/post');
 	const requestServer = useServerRequest();
+	const [error, setError] = useState(null)
 
 	useLayoutEffect(() => {
 		dispatch(RESET_POST_DATA);
@@ -23,11 +24,15 @@ const PostContainer = ({ className }) => {
 		if (isCreating) {
 			return;
 		}
-		dispatch(loadPostAsync(requestServer, params.id));
+		dispatch(loadPostAsync(requestServer, params.id)).then((postData) => {
+			if(postData.error){
+				setError(postData.error)
+			}
+		})
 	}, [dispatch, requestServer, params.id, isCreating]);
 
-	return (
-		<div className={className}>
+	return ( error ? (<div>{error}</div>) :
+		(<div className={className}>
 			{isCreating || isEditing ? (
 				<PostForm post={post} />
 			) : (
@@ -36,7 +41,7 @@ const PostContainer = ({ className }) => {
 					<Comments comments={post.comments} postId={post.id} />
 				</>
 			)}
-		</div>
+		</div>)
 	);
 };
 

@@ -1,8 +1,8 @@
-import { useStore } from "react-redux";
-import { useEffect } from "react";
+import { useStore } from 'react-redux';
+import { useEffect } from 'react';
 
 export const useResetForm = (reset) => {
-	const store = useStore()
+	const store = useStore();
 
 	useEffect(() => {
 		let currentWasLogout = store.getState().app.wasLogout;
@@ -14,4 +14,4 @@ export const useResetForm = (reset) => {
 			}
 		});
 	}, [reset, store]);
-}
+};

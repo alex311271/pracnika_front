@@ -9,4 +9,4 @@ export const editPost = ({ id, imageUrl, title, content }) =>
 			title,
 			content,
 		}),
-	}).then((loadedPost)=>loadedPost.json());
+	}).then((loadedPost) => loadedPost.json());
