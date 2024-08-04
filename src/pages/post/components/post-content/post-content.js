@@ -3,6 +3,7 @@ import { H2, Icon } from '../../../../components';
 import { PostPanel } from '../post-panel/post-panel';
 import { useNavigate } from 'react-router-dom';
 
+
 const PostContentContainer = ({
 	className,
 	post: { id, title, imageUrl, content, publishedAt },

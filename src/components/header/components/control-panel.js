@@ -6,6 +6,7 @@ import { Button } from '../../button/button';
 import { ROLE } from '../../../constants';
 import { selectUserRole, selectUserLogin, selectUserSession } from '../../../selectors';
 import { logout } from '../../../actions/logout';
+import { checkAccess } from '../../../utils';
 
 const RightAlined = styled.div`
 	display: flex;
@@ -30,6 +31,8 @@ const ControlPanelContainer = ({ className }) => {
 		dispatch(logout(session));
 		sessionStorage.removeItem('userData');
 	};
+
+	const isAdmin = checkAccess([ROLE.ADMIN], roleId);
 
 	return (
 		<div className={className}>
@@ -58,12 +61,16 @@ const ControlPanelContainer = ({ className }) => {
 					onClick={() => navigate(-1)}
 				/>
 
-				<Link to="/post">
-					<Icon id="fa-file-text-o" size="1.3rem" margin="1rem 0 0 0" />
-				</Link>
-				<Link to="/users">
-					<Icon id="fa-users" size="1.3rem" margin=" 1rem 0 0 1rem " />
-				</Link>
+				{isAdmin && (
+					<>
+						<Link to="/post">
+							<Icon id="fa-file-text-o" size="1.3rem" margin="1rem 0 0 0" />
+						</Link>
+						<Link to="/users">
+							<Icon id="fa-users" size="1.3rem" margin=" 1rem 0 0 1rem " />
+						</Link>
+					</>
+				)}
 			</RightAlined>
 		</div>
 	);
