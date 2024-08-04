@@ -25,7 +25,7 @@
       "login": "New",
       "password": "321654",
       "register_at": "2045-11-27 06:43",
-      "role_id": 2,
+      "role_id": 3,
       "id": "O0Bd-d6"
     }
   ],
@@ -229,6 +229,17 @@
         "roleId": 0
       },
       "id": "KlCBMU-"
+    },
+    {
+      "hash": "0.89766301419959759755329287145286798477172851562500",
+      "user": {
+        "id": "6e56",
+        "login": "Olga",
+        "password": "123456",
+        "registeredAt": "2051-09-07 16:27",
+        "roleId": 1
+      },
+      "id": "9vtNNCp"
     }
   ]
 }

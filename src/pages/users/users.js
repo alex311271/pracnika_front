@@ -1,39 +1,52 @@
 import styled from 'styled-components';
-import { H2, Content } from '../../components';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { H2, PrivateContent } from '../../components';
 import { useServerRequest } from '../../hooks';
 import { TableRow, UserRow } from './components';
-import { useEffect, useState } from 'react';
 import { ROLE } from '../../constants';
+import { selectUserRole } from '../../selectors';
+import { checkAccess } from '../../utils';
 
 const UsersContainer = ({ className }) => {
 	const [users, setUsers] = useState([]);
 	const [roles, setRoles] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
-	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false)
+	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
 	const requestServer = useServerRequest();
+	const userRole = useSelector(selectUserRole);
 
 	useEffect(() => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(
 			([usersRes, rolesRes]) => {
 				if (usersRes.error || rolesRes.error) {
 					setErrorMessage(usersRes.error || rolesRes.error);
 					return;
 				}
+
 				setUsers(usersRes.res);
 				setRoles(rolesRes.res);
 			},
 		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [requestServer, shouldUpdateUserList]);
 
 	const onUserRemove = (userId) => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
+
 		requestServer('removeUser', userId).then(() => {
 			setShouldUpdateUserList(!shouldUpdateUserList);
 		});
-	}
+	};
 
 	return (
-		<div className={className}>
-			<Content error={errorMessage}>
+		<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+			<div className={className}>
 				<H2>Пользователи</H2>
 				<div>
 					<TableRow>
@@ -49,12 +62,12 @@ const UsersContainer = ({ className }) => {
 							registeredAt={registeredAt}
 							roleId={roleId}
 							roles={roles.filter(({ id: roleId }) => roleId !== ROLE.GUEST)}
-							onUserRemove={()=>onUserRemove(id)}
+							onUserRemove={() => onUserRemove(id)}
 						/>
 					))}
 				</div>
-			</Content>
-		</div>
+			</div>
+		</PrivateContent>
 	);
 };
 

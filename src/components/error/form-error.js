@@ -1,9 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { H2 } from '../h2/h2';
 
-export const FormError = styled.div`
-	background-color: #fcadad;
-	text-align: center;
-	padding: 5px;
+const Div = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	font-size: 18px;
-	margin: 10px 0;
 `;
+
+export const FormError = ({ error }) =>
+	error && (
+		<Div>
+			<H2>Ошибка</H2>
+			<div>{error}</div>
+		</Div>
+	);

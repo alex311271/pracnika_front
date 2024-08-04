@@ -66,4 +66,4 @@
 - users:
   массив user: - id - login - registeredAt - role
   Запрос погоды:
-  fetch(https://api.openweathermap.org/data/2.5/weather?q=Saint-Petersburg&units=metric&lang=ru&appid=dc2ce85b67d064cc364926426dfc72db).then((data)=>data.json()).then(console.log);
+  fetch(https://api.openweathermap.org/data/2.5/weather?q=Saint-Petersbgiturg&units=metric&lang=ru&appid=dc2ce85b67d064cc364926426dfc72db).then((data)=>data.json()).then(console.log);
