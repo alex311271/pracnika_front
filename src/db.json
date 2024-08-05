@@ -31,19 +31,19 @@
   ],
   "roles": [
     {
-      "id": "0",
+      "id": 0,
       "name": "Администратор"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "Модератор"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Читатель"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Гость"
     }
   ],
@@ -135,18 +135,18 @@
       "content": "first comment"
     },
     {
-      "id": "8424",
-      "author_id": "a5d7",
-      "post_id": "003",
-      "published_at": "2033-09-28 04:18",
-      "content": "comment Ivan"
-    },
-    {
       "id": "7ae1",
       "author_id": "001",
       "post_id": "003",
       "published_at": "2048-05-04 02:47",
       "content": "comment Iam"
+    },
+    {
+      "author_id": "6e56",
+      "post_id": "003",
+      "published_at": "2044-08-29 23:36",
+      "content": "Комментарий от Ольги",
+      "id": "ixKqPmq"
     }
   ],
   "sessions": [
@@ -217,7 +217,7 @@
       "id": "KlCBMU-"
     },
     {
-      "hash": "0.18268746195879570493048049684148281812667846679688",
+      "hash": "0.95836213543784043444873077532975003123283386230469",
       "user": {
         "id": "6e56",
         "login": "Olga",
@@ -225,7 +225,7 @@
         "registeredAt": "2051-09-07 16:27",
         "roleId": 1
       },
-      "id": "1ywmbDu"
+      "id": "Wp-g5Qm"
     }
   ]
 }

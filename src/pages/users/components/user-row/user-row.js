@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Icon } from '../../../../components';
 import { TableRow } from '../table-row/table-row';
 import { useServerRequest } from '../../../../hooks';
+import { PROP_TYPE } from '../../../../constants';
 
 const UserRowContainer = ({
 	className,
@@ -48,12 +50,7 @@ const UserRowContainer = ({
 					onClick={() => onRoleSave(id, selectedRoleId)}
 				/>
 			</TableRow>
-			<Icon
-				id="fa-trash-o"
-				size="1.3rem"
-				margin="0 0 0 10px"
-				onClick={onUserRemove}
-			/>
+			<Icon id="fa-trash-o" size="1.3rem" margin="0 0 0 10px" onClick={onUserRemove} />
 		</div>
 	);
 };
@@ -68,3 +65,12 @@ export const UserRow = styled(UserRowContainer)`
 		padding: 0 5px;
 	}
 `;
+
+UserRow.propTypes = {
+	id: PropTypes.string.isRequired,
+	login: PropTypes.string.isRequired,
+	registeredAt: PropTypes.string.isRequired,
+	roleId: PROP_TYPE.ROLE_ID.isRequired,
+	roles: PropTypes.arrayOf(PROP_TYPE.ROLES).isRequired,
+	onUserRemove: PropTypes.func.isRequired,
+};

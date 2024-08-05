@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useServerRequest } from '../../../../hooks';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Icon } from '../../../../components';
 import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../actions';
 import { checkAccess } from '../../../../utils';
@@ -71,3 +72,9 @@ export const PostPanel = styled(PostPanelContainer)`
 		display: flex;
 	}
 `;
+
+PostPanel.propTypes = {
+	id: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+	editButton: PropTypes.node.isRequired,
+};

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Icon } from '../../../../../../components';
 import { removeCommentAsync, openModal, CLOSE_MODAL } from '../../../../../../actions';
 import { useServerRequest } from '../../../../../../hooks';
@@ -85,3 +86,11 @@ export const Comment = styled(CommentContainer)`
 		align-items: center;
 	}
 `;
+
+Comment.propTypes = {
+	postId: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
+	author: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+};

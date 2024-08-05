@@ -7,6 +7,7 @@ import { PostPanel } from '../post-panel/post-panel';
 import { sanitizeContent } from './utils';
 import { saveEditAsync } from '../../../../actions';
 import { useServerRequest } from '../../../../hooks';
+import { PROP_TYPE } from '../../../../constants';
 
 const PostFormContainer = ({
 	className,
@@ -76,3 +77,7 @@ export const PostForm = styled(PostFormContainer)`
 		font-size: 18px;
 	}
 `;
+
+PostForm.propTypes = {
+	post: PROP_TYPE.POST,
+};
